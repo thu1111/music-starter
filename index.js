@@ -1,4 +1,4 @@
-const COHORT = "REPLACE_ME!";
+const COHORT = "2410-FTB-ET-WEB-FT";
 const API_URL = `https://fsa-crud-2aa9294fe819.herokuapp.com/api/${COHORT}/artists`;
 
 //1.State 
