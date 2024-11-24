@@ -18,3 +18,18 @@ li {
 img {
   max-width: 100%;
 }
+
+.deleteBtn {
+  padding: 10px;
+  background-color: red;
+  color: white;
+  font-weight: bolder;
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 1px 1px 1px 1px gray;
+}
+
+.deleteBtn:hover {
+  background-color: rgb(255, 59, 59);
+  box-shadow: 1px 1px 1px 1px gainsboro;
+}

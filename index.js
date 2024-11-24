@@ -36,6 +36,13 @@ function renderArtists() {
       <img src="${artist.imageUrl}" alt="${artist.name}"/>
       <p></p>
     `;
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.classList.add("deleteBtn");
+    deleteBtn.textContent = "Delete Artist";
+    card.append(deleteBtn);
+
+    deleteBtn.addEventListener("click", ()=>deleteArtist(artist.id));
     return card;
   });
 
@@ -86,3 +93,39 @@ form.addEventListener("submit", async(event)=>{
   // render();
 });
 
+//Delete Function
+async function deleteArtist(id) {
+  try {
+    const response = await fetch (`${API_URL}/${id}`, {
+      method: "DELETE",
+    });
+    if (!response.ok) {
+      throw new Error("Cannot delete Artist");
+    }
+
+    render();
+  } catch (error) {
+    console.error(error);    
+  }
+}
+
+//Update Function
+async function updateArtist(id, artistInfo) {
+  try {
+    const response = await fetch (`${API_URL}/${id}`, {
+      method: "PUT",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify(artistInfo),
+    });
+    if (!response.ok) {
+      throw new Error("Cannot update Artist");
+    }
+
+    const json = await response.json();
+    console.log(json);
+    
+    render();
+  } catch (error) {
+    console.error(error);    
+  }
+}
